@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import { nanoid } from 'nanoid';
 
 import ContactsList from './ContactsList';
@@ -7,11 +7,29 @@ import ContactsForm from './ContactsForm';
 
 import css from './app.module.css';
 
-export class App extends Component {
+export class App extends PureComponent {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    console.log('componentDidMount');
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
 
   deleteContact = id => {
     this.setState(({ contacts }) => {
@@ -62,8 +80,9 @@ export class App extends Component {
   };
 
   render() {
+    console.log('render');
     const { addContact, deleteContact, handleFilter } = this;
-    const {filter} = this.state;
+    const { filter } = this.state;
     const acceptedContacts = this.getFilteredContacts();
 
     return (
@@ -75,7 +94,7 @@ export class App extends Component {
           </div>
           <div className={css.wrapper}>
             <h3 className={css.h3}>Contacts</h3>
-            <ContactsFilter onInputChange={handleFilter} filter={filter}/>
+            <ContactsFilter onInputChange={handleFilter} filter={filter} />
             <ContactsList
               deleteContact={deleteContact}
               acceptedContacts={acceptedContacts}
