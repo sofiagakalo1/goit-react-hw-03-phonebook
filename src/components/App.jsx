@@ -14,7 +14,7 @@ export class App extends PureComponent {
   };
 
   componentDidMount() {
-    console.log('componentDidMount');
+    // console.log('componentDidMount');
     const contacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(contacts);
     if (parsedContacts) {
@@ -22,13 +22,13 @@ export class App extends PureComponent {
     }
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
+    // console.log('componentDidUpdate');
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
   componentWillUnmount() {
-    console.log('componentWillUnmount');
+    // console.log('componentWillUnmount');n
   }
 
   deleteContact = id => {
@@ -80,7 +80,7 @@ export class App extends PureComponent {
   };
 
   render() {
-    console.log('render');
+    // console.log('render');
     const { addContact, deleteContact, handleFilter } = this;
     const { filter } = this.state;
     const acceptedContacts = this.getFilteredContacts();
