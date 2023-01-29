@@ -38,7 +38,6 @@
   font-weight: normal;
   font-size: 16px;
   color: #666;
-  margin-bottom: 20px;
 }
 
 .button {
@@ -50,7 +49,6 @@
   border-radius: 25px;
   cursor: pointer;
   padding: 10px 5px;
-  margin: 10px 5px;
 }
 
 .button:hover {
