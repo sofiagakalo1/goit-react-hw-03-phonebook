@@ -1,21 +1,19 @@
-.filterBlock {
-  margin-bottom: 10px;
-}
+/* .filterBlock {
+} */
 .h4 {
   margin-bottom: 10px;
   font-weight: normal;
-  font-size: 15px;
+  font-size: 18px;
   color: #666;
 }
 .input {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 0px;
-  margin-bottom: 10px;
   box-sizing: border-box;
   font-family: montserrat;
   color: #2c3e50;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .input:focus {
